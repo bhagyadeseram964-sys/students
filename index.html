@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AURORE 2026 | Welcome</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0303;font-family:'Inter',sans-serif;color:#F5E6D3;display:flex;justify-content:center;align-items:center;min-height:100vh;overflow-x:hidden;perspective:1500px;}
+
+/* BACKGROUND */
+body::before{
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(circle at 30% 10%, #2e0a0a, #050101 80%);
+  z-index:-3;
+  animation: bgGradient 30s ease-in-out infinite;
+}
+@keyframes bgGradient {
+  0%{background:radial-gradient(circle at 30% 10%, #2e0a0a, #050101 80%);}
+  50%{background:radial-gradient(circle at 70% 30%, #1a0505, #000 80%);}
+  100%{background:radial-gradient(circle at 30% 10%, #2e0a0a, #050101 80%);}
+}
+.star{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;opacity:0.7;animation:twinkle 3s infinite alternate;}
+@keyframes twinkle{0%{opacity:0.2;}50%{opacity:0.8;}100%{opacity:0.2;}}
+
+/* NAME SCREEN */
+.name-screen{background:rgba(10,5,5,.85);padding:3rem;border-radius:2rem;text-align:center;border:1px solid rgba(212,175,55,.5);box-shadow:0 0 40px rgba(212,175,55,.3);}
+.name-screen input{padding:.5rem 1rem;border-radius:1rem;border:1px solid #e4b363;background:#1a0a0a;color:#fff;font-size:1rem;margin-top:1rem;}
+.name-screen button{margin-top:1rem;padding:.5rem 1.5rem;border-radius:1.5rem;border:none;background:linear-gradient(135deg,#FFE5B4,#E4B363);color:#1e0a0a;font-weight:600;font-size:1rem;cursor:pointer;}
+
+/* CARD */
+.invitation-card{
+  display:none;
+  max-width:1200px;
+  margin:auto;
+  padding:2rem;
+  transform-style: preserve-3d;
+  transform: rotateY(90deg) scale(0.7);
+  opacity:0;
+  animation:flipZoom 1s forwards;
+}
+@keyframes flipZoom {
+  0% {transform: rotateY(90deg) scale(0.7); opacity:0;}
+  100% {transform: rotateY(0deg) scale(1); opacity:1;}
+}
+
+/* LOGO */
+.top-logo{text-align:center;margin-bottom:1.5rem;}
+.top-logo img{
+  max-width:260px;width:100%;
+  filter:drop-shadow(0 0 15px #e4b363);
+  animation:floatLogo 4s ease-in-out infinite;
+}
+@keyframes floatLogo{0%{transform:translateY(0);}50%{transform:translateY(-15px);}100%{transform:translateY(0);}}
+
+/* HEADER */
+.logo-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid rgba(212,175,55,.5);padding-bottom:1rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.logo-area{display:flex;align-items:center;gap:.8rem;}
+.logo-icon{
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(145deg,#c9a03d,#8b691b);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-icon i{font-size:2rem;color:#1e0a0a;}
+.logo-text h2{font-family:'Space Grotesk';font-size:1.8rem;color:#e4b363;}
+.logo-text span{font-size:.7rem;color:#e4b56e;}
+.invite-badge{padding:.5rem 1.2rem;border-radius:40px;border:1px solid #e4b363;font-size:.9rem;}
+
+/* TITLE */
+.invitation-title{text-align:center;margin-top:1rem;}
+.typing-title{
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:.15em solid #e4b363;
+  animation:typing 3s steps(25) 1, blink 0.7s infinite;
+}
+@keyframes typing{from{width:0;}to{width:100%;}}
+@keyframes blink{50%{border-color:transparent;}}
+
+.ornament{width:120px;height:3px;margin:.6rem auto;background:#e4b363;}
+.tagline{text-align:center;}
+
+/* DETAILS */
+.event-details{margin:2rem 0;display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+.info{display:flex;gap:.8rem;align-items:center;padding:.8rem 1.6rem;border-radius:3rem;border:1px solid rgba(212,175,55,.4);}
+.info i{font-size:1.5rem;color:#e4b363;}
+
+/* COUNTDOWN */
+.countdown{text-align:center;}
+.time-box{display:inline-block;margin:5px;padding:10px;border:1px solid #e4b363;}
+.num{font-size:2rem;}
+
+/* MESSAGE */
+.welcome-note{
+  margin:2rem 0;
+  padding:1.6rem;
+  border-left:6px solid #e4b363;
+  border-radius:2rem;
+  background:rgba(212,175,55,.1);
+  text-align:center;
+}
+
+/* FOOTER */
+footer{text-align:center;margin-top:2rem;font-size:.8rem;}
+</style>
+</head>
+
+<body>
+
+<div class="name-screen" id="nameScreen">
+  <h2>Welcome to AURORE 2026!</h2>
+  <input type="text" id="guestName" placeholder="Your Name"><br>
+  <button id="enterBtn">Enter</button>
+</div>
+
+<div class="invitation-card" id="invitationCard">
+
+  <div class="top-logo">
+    <img src="aurore-logo.jpeg">
+  </div>
+
+  <div class="logo-header">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fas fa-crown"></i></div>
+      <div class="logo-text">
+        <h2>AURORE 2026</h2>
+        <span>Faculty of Computer Science & Engineering</span>
+      </div>
+    </div>
+    <div class="invite-badge">OFFICIAL INVITATION</div>
+  </div>
+
+  <div class="invitation-title">
+    <h1 class="typing-title">Welcome to AURORE 2026</h1>
+    <div class="ornament"></div>
+    <div class="tagline">We would be deeply honored by your presence</div>
+  </div>
+
+  <div class="event-details">
+    <div class="info"><i class="fas fa-calendar-alt"></i> 9 April 2026</div>
+    <div class="info"><i class="fas fa-clock"></i> 9:00 AM</div>
+    <div class="info"><i class="fas fa-location-dot"></i> KIU Auditorium</div>
+  </div>
+
+  <div class="welcome-note">
+    <p>
+      <strong><span id="personalName">Dear Mr/Miss,</span></strong><br><br>
+
+      We are honored to invite you to <strong>AURORE 2026 – Juniors Welcoming Event</strong>.<br><br>
+
+      Organized by the seniors of the Faculty of Computer Science & Engineering<br>
+      <strong>(10A / 11 / 11A SE / CNCS / MIS & 2 / 2A DS Batches)</strong>.<br><br>
+
+      Your esteemed presence would greatly enrich this special occasion,<br>
+      and we would be deeply honored to have you with us.
+    </p>
+  </div>
+
+  <footer>
+    AURORE 2026 · Junior Welcome Event<br>
+    Organized by 10A / 11 / 11A SE / CNCS / MIS & 2 / 2A DS Batches<br>
+    FOCSE · KIU Auditorium
+  </footer>
+
+</div>
+
+<script>
+const btn=document.getElementById('enterBtn');
+btn.onclick=()=>{
+  let name=document.getElementById('guestName').value;
+  if(!name){alert("Enter name");return;}
+  document.getElementById('personalName').innerText="Dear Mr/Miss "+name+",";
+  document.getElementById('nameScreen').style.display='none';
+  document.getElementById('invitationCard').style.display='block';
+};
+</script>
+
+</body>
+</html>
